@@ -24,22 +24,59 @@ Route::get('/message', function() {
 });
 
 Route::post('/message', function(Request $request) {
-    Log::Info(env('NEXMO_API_KEY'));
+    // TODO: validate incoming params first!
 
-    $url = "https://rest.nexmo.com/sms/json";
-    // $url = "https://ljnexmo.eu.ngrok.io";
-    $params = ["api_key" => env('NEXMO_API_KEY'),
-        "api_secret" => env('NEXMO_API_SECRET'),
-        "from" => env('NEXMO_NUMBER'),
-        "to" => $request->input('number'),
-        "text" => "Hello from Vonage and Laravel :)"
+    $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
+    $params = ["to" => ["type" => "whatsapp", "number" => $request->input('number')],
+        "from" => ["type" => "whatsapp", "number" => "14157386170"],
+        "message" => [
+            "content" => [
+                "type" => "text",
+                "text" => "Hello from Vonage and Laravel :) Please reply to this message with a number between 1 and 100"
+            ]
+        ]
     ];
+    $headers = ["Authorization" => "Basic " . base64_encode(env('NEXMO_API_KEY') . ":" . env('NEXMO_API_SECRET'))];
 
     $client = new \GuzzleHttp\Client();
-    $response = $client->request('POST', $url, ['query' => $params]);
+    $response = $client->request('POST', $url, ["headers" => $headers, "json" => $params]);
     $data = $response->getBody();
     Log::Info($data);
 
     return view('thanks');
 });
 
+Route::post('/webhooks/status', function(Request $request) {
+    $data = $request->all();
+    Log::Info($data);
+});
+
+Route::post('/webhooks/inbound', function(Request $request) {
+    $data = $request->all();
+
+    $text = $data['message']['content']['text'];
+    $number = intval($text);
+    Log::Info($number);
+    if($number > 0) {
+        $random = rand(1, 8);
+        Log::Info($random);
+        $respond_number = $number * $random;
+        Log::Info($respond_number);
+        $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
+        $params = ["to" => ["type" => "whatsapp", "number" => $data['from']['number']],
+            "from" => ["type" => "whatsapp", "number" => "14157386170"],
+            "message" => [
+                "content" => [
+                    "type" => "text",
+                    "text" => "The answer is " . $respond_number . ", we multiplied by " . $random . "."
+                ]
+            ]
+        ];
+        $headers = ["Authorization" => "Basic " . base64_encode(env('NEXMO_API_KEY') . ":" . env('NEXMO_API_SECRET'))];
+
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $url, ["headers" => $headers, "json" => $params]);
+        $data = $response->getBody();
+    }
+    Log::Info($data);
+});
