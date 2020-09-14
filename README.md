@@ -12,14 +12,14 @@ If you're new to Vonage, you can [sign up for an account](https://dashboard.nexm
 
 We've tried to keep things short and sweet!
 
-* Clone this repo and run `composer install`.
+* Clone this repo and run `composer install` (requires PHP 7.3+).
 * Copy `.env.example` to `.env`, add your credentials to the `NEXMO_*` fields at the bottom.
 * Run your application with `php artisan serve`.
 * If you're working locally, run [ngrok](https://ngrok.com) to expose the port locally; copy the URL.
 * On the [Dashboard](https://dashboard.nexmo.com), go to the Messages API Sandbox, and whitelist your phone for WhatsApp.
 * On the same page, configure the webhook URLs for incoming messages and status events:
-    - incoming messages should be `[url you copied earlier]/webhook/inbound`
-    - status webhooks should go to `[url you copied earlier]/webhook/status`
+    - incoming messages should be `[url you copied earlier]/webhooks/inbound`
+    - status webhooks should go to `[url you copied earlier]/webhooks/status`
 
 You're all set!
 
