@@ -2,15 +2,11 @@
 
 <img src="https://developer.nexmo.com/assets/images/Vonage_Nexmo.svg" height="48px" alt="Nexmo is now known as Vonage" />
 
-> (If you're here looking for the older `laravel-sms` project, check out the v1 tag on this repo)
-
 Laravel Messages is a very simple demo app to show a Messages API integration with Laravel 7. It receives and responds to WhatsApp messages, sends Messages to a whitelisted number, and logs the incoming status events.
 
 ## Welcome to Vonage
 
-<!-- change "github-repo" at the end of the link to be the name of your repo, this helps us understand which projects are driving signups so we can do more stuff that developers love -->
-
-If you're new to Vonage, you can [sign up for an account](https://dashboard.nexmo.com/sign-up?utm_source=DEV_REL&utm_medium=github&utm_campaign=github-repo) and get some free credit to get you started.
+If you're new to Vonage, you can [sign up for an account](https://dashboard.nexmo.com/sign-up?utm_source=DEV_REL&utm_medium=github&utm_campaign=laravel-messages) and get some free credit to get you started.
 
 ## Set Up the Project
 
@@ -42,4 +38,3 @@ We love to hear from you so if you have questions, comments or find a bug in the
 ## Further Reading
 
 * Check out the Developer Documentation at <https://developer.nexmo.com>
-
