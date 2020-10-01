@@ -31,7 +31,8 @@ Visit `[url of project]/messages` and enter the number of the whitelisted phone 
 
 We love to hear from you so if you have questions, comments or find a bug in the project, let us know! You can either:
 
-* Open an issue on this repository
+* Open an issue on this repository. 
+* Before you start contributing, check out the [Code of Conduct](CODEOFCONDUCT.md).
 * Tweet at us! We're [@VonageDev on Twitter](https://twitter.com/VonageDev)
 * Or [join the Nexmo Community Slack](https://developer.nexmo.com/community/slack)
 
