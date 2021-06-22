@@ -36,6 +36,13 @@ We love to hear from you so if you have questions, comments or find a bug in the
 * Tweet at us! We're [@VonageDev on Twitter](https://twitter.com/VonageDev)
 * Or [join the Nexmo Community Slack](https://developer.nexmo.com/community/slack)
 
+### Special Notes
+
+For Laravel users using the Vonage Laravel facades (`laravel/nexmo-notification-channel` & `nexmo/laravel` for SMS notifications and setting up laravel Whatsapp API
+
+* Use `env` values stored in `config/nexmo.php` and
+    - Replace `NEXMO_API_KEY`,`NEMXO_API_SECRET` in `routes/web.php` with `NEXMO_KEY`,`NEXMO_SECRET` referenced in `config/nexmo.php` or you can customize
+
 ## Further Reading
 
 * Check out the Developer Documentation at <https://developer.nexmo.com>
